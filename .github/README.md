@@ -1,1 +1,1 @@
-../'Terraform Associate Study Notes.txt'
+ln -s ../'Terraform Associate Study Notes.txt'
