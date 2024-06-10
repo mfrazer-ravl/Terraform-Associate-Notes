@@ -1,11 +1,11 @@
-#Terraform Associate Study Notes
+# Terraform Associate Study Notes
 
-##Understand Infastucture as Code Concepts
+## Understand Infastucture as Code Concepts
 
-###What is IAC
+### What is IAC
 IAC allows users to build infastructure using text based files instead of using GUIs or CLIs. 
 
-###Advantages of IAC Patterns
+### Advantages of IAC Patterns
 There are __BlAh____ benefits to using IAC:
 
 1. Tack Infastructure: All changes are based off of the TF state file allowing you to view and track all changes in one central location.
@@ -17,9 +17,9 @@ There are __BlAh____ benefits to using IAC:
 4. Collaborate: Using git or terraform cloud you are able to add version control to your code allowing you to easily collabarte with others on writing IAC.
 
 
-##Understadn the Purpose of Terraform vs Other IAC
+## Understand the Purpose of Terraform vs Other IAC
 
-###Cloud and provider agnostic
+### Cloud and provider agnostic
 
-###The Benefits of State
+### The Benefits of State
 
