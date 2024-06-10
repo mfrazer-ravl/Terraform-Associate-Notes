@@ -6,7 +6,7 @@
 IAC allows users to build infastructure using text based files instead of using GUIs or CLIs. 
 
 ### Advantages of IAC Patterns
-There are __BlAh____ benefits to using IAC:
+There are 4 main benefits to using IAC:
 
 1. Tack Infastructure: All changes are based off of the TF state file allowing you to view and track all changes in one central location.
 
