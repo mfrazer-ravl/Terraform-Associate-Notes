@@ -43,6 +43,46 @@ Provider version can also be specified so that a minium version of the provider 
 | Terraform core is responsible for interpreting the IAC, finding the difference between the desired state and current state, and communicating the plan to the plugins over RPC | Terraform plugins are responsible for making the API calls, authentication with the provider, define managed resources and functions |
 
 ### Terraform with Multiple Providers
-One of the excellent features of Terraform is that it can support multiple providers all in one piece of code. To s
+One of the excellent features of Terraform is that it can support multiple providers in one deployment. By specifying the provider in each resource block you are able to launch into multiple public clouds for example at once. If you need to lauch into multiple regions at once for aws, you can use the alias parameter e.g. aws.west or aws.east. 
 
-### Terraform Providers in Depth
+
+## Terraform Outside the Core Workflow
+
+### Terraform Import
+The terraform import command lets you bring in resources that were not deployed using terraform into your terraform.tfstate file so that it can then be tracked and managed. 
+
+### Terraform State
+The terraform state command let's you make changes to the terraform state file directly.
+
+### Verbose Logging
+Terraform has detailed logs that are enabled by setting TF_LOG one of 5 levels (Trace -> Error).
+
+
+## Terraform Modules
+
+### Module Source Options
+There are roughly three main sources for modules.
+
+1. Make your own: You can right your own modules that you can either source locally or upload them to an online repo.
+
+2. Terraform Registry: This is Terraform's Public Registry where providers can upload pre-built modules to take care of commonly needed use cases. 
+
+3. Private Registry: Terraform cloud let's you create a private Registry for your organization allowing you to pull from your own internally created modules.
+
+### Module Input and Output
+All input variables are declared in variable blocks. You are able to add the following arguments to the block:
+|  Optional Arguments | Effect  |
+|---|---|
+| default  | The default argument let's you assign a stock value that terraform will assign to the variable if you don't |
+| type  | The type argument constrains what the variable block will accept. This can be a mix of type keywords (string, number, bool) and type constructors (list, set, map...) |
+| description  |  The description allows you to describe what the purpose of the variable is |
+| sensitive  | When you assign sensitive to true terraform will sensor the variable in the plan and apply output. The value will still appear however in the statefile.  |
+| nullable  | When set to true nullable will allow terraform to set this variable to nul. When false if null is assigned it will attempt to use the default value before throwing an error. | 
+
+### Variable Scope Within Modules
+
+
+
+### Module Version
+
+
