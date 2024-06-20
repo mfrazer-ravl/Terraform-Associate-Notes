@@ -1,20 +1,20 @@
 # Terraform Associate Study Notes
 
-## Understand Infastucture as Code Concepts
+## Understand Infrastructure as Code Concepts
 
 ### What is IAC
-Infastructure as Code allows users to build infastructure using text based files instead of using GUIs or CLIs. These files are made up of Terraform code that is designed to be human readable, while also be flexable enough to work across many providers.
+Infrastructure as Code allows users to build infrastructure using text based files instead of using GUIs or CLIs. These files are made up of Terraform code that is designed to be human readable, while also be flexible enough to work across many providers.
 
 ### Advantages of IAC Patterns
 There are 4 main benefits to using IAC:
 
-1. Tack Infastructure: All changes are based off of the TF state file allowing you to view and track all changes in one central location.
+1. Tack Infrastructure: All changes are based off of the TF state file allowing you to view and track all changes in one central location.
 
-2. Automnation: Terraform is smart and deploys your changes in the order that product needs them in. In AWS for example even if you created the subnet before the VPC, terraform knows to create the vpc first before it can deploy the subnet. 
+2. Automation: Terraform is smart and deploys your changes in the order that product needs them in. In AWS for example even if you created the subnet before the VPC, terraform knows to create the vpc first before it can deploy the subnet. 
 
 3. Standardize Configurations: You can create or use publically available modules to keep your IAC standardized and easily repeatable. 
 
-4. Collaborate: Using git or terraform cloud you are able to add version control to your code allowing you to easily collabarte with others on writing IAC.
+4. Collaborate: Using git or terraform cloud you are able to add version control to your code allowing you to easily collaborate with others on writing IAC.
 
 
 ## Understand the Purpose of Terraform vs Other IAC
@@ -31,11 +31,11 @@ The Terraform state file plays the cruical role of maintaining Terraform's knowl
 ### Installing and Versioning Providers
 A provider in Terraform is the magic that help makes it all run. The provider converts your Terraform code into the necessary api structure needed to build out your desired infastructure. There are three tiers to providers in Terraform:
 
-1. Offical: Published by the company that owns the technology.
-2. Verified: Is actively mainted and is up-to-date.
+1. Official: Published by the company that owns the technology.
+2. Verified: Is actively maintained and is up-to-date.
 3. Community: A community member has built this, no-guarantee of function.
 
-Provider version can also be specified so that a minium version of the provider can be verified to be in use. In a terraform block use the <required_providers> block to the call the desired version. Adding >= before the version will set it to the minimum required, where default or = will specify the exact requirment. 
+Provider version can also be specified so that a minimum version of the provider can be verified to be in use. In a terraform block use the <required_providers> block to the call the desired version. Adding >= before the version will set it to the minimum required, where default or = will specify the exact requirement. 
 
 ### Plugin Based Architecture
 | Terraform Core | Terraform Plugins |
@@ -80,9 +80,56 @@ All input variables are declared in variable blocks. You are able to add the fol
 | nullable  | When set to true nullable will allow terraform to set this variable to nul. When false if null is assigned it will attempt to use the default value before throwing an error. | 
 
 ### Variable Scope Within Modules
+Modules are used as containers to run multiple resource commands in a systematic/automated way.
 
+A module is called by using the following format:
 
+module "name" {
+  source = "foo" #(required)
+  version = "bar" #(version is recommended for registry modules)
+}
+
+This is considered a "child module", in this case called name.
+
+Modules are typically going to have you describe other variables as well in the module declaration.
 
 ### Module Version
+Specifying a version is important when sourcing a module from a public or private registry so that you are able to meet the known constraints.
+
+
+## Terraform Core Workflow
+
+### Write -> Plan -> Create
+
+1. Write: Author infrastructure as code.
+
+	Individual
+	Writes terraform code in the editor of their choice, storing their code either locally or using a remote version controlled repository.
+
+	Team
+	When writing with a team it is vital to be uploading code to a shared version controlled repository. On top of that individual team members will make their changes to a unique branch that can be merged to the main branch later. 
+
+2. Plan: Preview changes before applying.
+
+	Individual
+	Using terraform plan or apply will highlight the changes that you wrote previously.
+
+	Team
+	When working with a team the terraform plan command becomes even more important and lets the team take a collaborative approach when reviewing changes.
+
+3. Apply: Provision reproducible infrastructure.
+
+
+
+### Terraform Init
+
+### Terraform Validate
+
+### Terraform Apply
+
+### Terraform Destroy
+
+### Terraform FMT
+
 
 
